@@ -1,0 +1,2 @@
+# Flight-information-inquiry-system
+一个基于javaWeb开发的航班信息查询系统，目前只有后台，通过不同管理员的不同权限可以对数据进行简单的增删查改。前台界面基于JQuery和Bootstrap开发。
