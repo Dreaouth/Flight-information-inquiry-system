@@ -51,13 +51,29 @@ public class QueryPlane extends HttpServlet {
 				request.getRequestDispatcher("Queryplane.jsp").forward(request,response);
 			}
 			if (action.equals("show")) {
-				
+				String select=request.getParameter("sel_city");
+				System.out.println(select);
+				if (select.equals("100")) {
+					
+				}
+				if (select.equals("0")) {
+					String startcity=request.getParameter("sta_start");
+					String arrivecity=request.getParameter("sta_arrive");
+					List<Plane> planes=queryById(startcity, arrivecity);
+					request.setAttribute("planeList", planes);
+					request.getRequestDispatcher("Queryplane.jsp").forward(request, response);
+				}
 			}
 		}
 	}
 	public List<Plane> queryAll(){
 		PlaneDao dao=new PlaneDao();
 		List<Plane> list=dao.queryAll();
+		return list;
+	}
+	public List<Plane> queryById(String startcity,String arrivecity){
+		PlaneDao dao=new PlaneDao();
+		List<Plane> list=dao.querybyId(startcity, arrivecity);
 		return list;
 	}
 

@@ -33,12 +33,14 @@
 	<div class="pd-20">
 		<div class="text-c">
 			<form action="QueryPlane?action=show" method="post">
-				航班查询： <select class="select" id="sel_Sub" name="sel_Sub"
+				航班查询： <select class="select" id="sel_city" name="sel_city"
 					onChange="SetSubID(this);">
-					<option value="0">根据城市名</option>
-					<option value="100">根据城市三字码</option>
-				</select> <input type="text" class="input-text" style="width: 250px"
-					placeholder="输入城市名，城市三字码，所属机场" id="sta_name" name="sta_name" value=<%=query %>>&nbsp;&nbsp;&nbsp;
+					<option value="0">根据城市三字码</option>
+					<option value="100">根据城市名</option>
+				</select> &nbsp;&nbsp;&nbsp;起始城市：<input type="text" class="input-text" style="width: 200px"
+					placeholder="输入城市名，城市三字码" id="sta_start" name="sta_start" value=<%=query %>>&nbsp;&nbsp;&nbsp;
+					到达城市：<input type="text" class="input-text" style="width: 200px"
+					placeholder="输入城市名，城市三字码" id="sta_arrive" name="sta_arrive" value=<%=query %>>&nbsp;&nbsp;&nbsp;
 				<button type="submit" class="btn btn-success">
 					<i class="icon-search"></i> 查询
 				</button>

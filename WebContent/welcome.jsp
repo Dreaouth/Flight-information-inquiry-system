@@ -14,7 +14,7 @@
 <link href="package/css/H-ui.admin.css" rel="stylesheet" type="text/css" />
 <link href="package/font/font-awesome.min.css" type="text/css"
 	rel="stylesheet" />
-<title>Insert title here</title>
+<title>航班信息系统主页面</title>
 </head>
 <body>
 	<header class="Hui-header cl">
@@ -38,7 +38,7 @@
 						<ul>
 							<li><a _href="QueryServlet?action=showall">城市查询</a></li>
 							<li><a _href="QueryPlane?action=showall">航班查询</a></li>
-							<li><a _href="group-list_07.html">机场查询</a></li>
+							<li><a _href="group-list_07.html">机型查询</a></li>
 							<li><a _href="ticketrate.html">票价查询</a></li>
 						</ul>
 					</dd>
@@ -52,9 +52,6 @@
 							<li><a _href="plan-list_15.html" href="javascript:;">添加机场</a></li>
 							<li><a _href="plan-list_15.html" href="javascript:;">添加航班</a></li>
 							<li><a _href="plan-list_15.html" href="javascript:;">添加机型</a></li>							
-							<li><a _href="plan-list_1.html" href="javascript:;">删除机场</a></li>
-							<li><a _href="plan-list_15.html" href="javascript:;">删除航班</a></li>
-							<li><a _href="plan-list_15.html" href="javascript:;">删除机型</a></li>
 						</ul>
 					</dd>
 				</dl>
@@ -64,6 +61,7 @@
 					</dt>
 					<dd>
 						<ul>
+							<li><a _href="seat-list_07.html" href="javascript:void(0)">更改城市(机场)</a></li>						
 							<li><a _href="seat-list_07.html" href="javascript:void(0)">更改航班</a></li>
 							<li><a _href="seat-list_07.html" href="javascript:void(0)">更改机型</a></li>
 							<li><a _href="seat-list_07.html" href="javascript:void(0)">更改航线</a></li>
