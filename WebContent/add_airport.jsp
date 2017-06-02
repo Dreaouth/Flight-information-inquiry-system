@@ -50,7 +50,7 @@
 		<div class="cl pd-5 bg-1 bk-gray mt-20">
   <div class="cl pd-5 bg-1 bk-gray mt-20">
     <span class="l"><a href="javascript:;" onClick="deleteseveralstations()" class="btn btn-danger radius"><i class="icon-trash"></i> 批量删除</a>
-  <a href="javascript:;" onClick="user_add('550','','添加车站','add_airport_in.jsp')" class="btn btn-primary radius"><i class="icon-plus"></i> 添加车站</a></span>
+  <a href="javascript:;" onClick="user_add('55','','添加','add_airport_in.jsp')" class="btn btn-primary radius"><i class="icon-plus"></i> 添加车站</a></span>
 		</div>
 		<div class="mt-20">
 			<table id="page"
