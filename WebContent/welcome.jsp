@@ -39,6 +39,7 @@
 							<li><a _href="QueryServlet?action=showall">城市查询</a></li>
 							<li><a _href="QueryPlane?action=showall">航班查询</a></li>
 							<li><a _href="group-list_07.html">机型查询</a></li>
+							<li><a _href="ticketrate.html">航空公司查询</a></li>
 							<li><a _href="ticketrate.html">票价查询</a></li>
 						</ul>
 					</dd>
@@ -49,9 +50,9 @@
 					</dt>
 					<dd>
 						<ul>
-							<li><a _href="plan-list_15.html" href="javascript:;">添加机场</a></li>
-							<li><a _href="plan-list_15.html" href="javascript:;">添加航班</a></li>
-							<li><a _href="plan-list_15.html" href="javascript:;">添加机型</a></li>							
+							<li><a _href="add_airport.jsp" >添加机场</a></li>
+							<li><a _href="plan-list_15.html">添加航班</a></li>
+							<li><a _href="plan-list_15.html">添加机型</a></li>							
 						</ul>
 					</dd>
 				</dl>

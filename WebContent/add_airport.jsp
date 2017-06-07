@@ -16,16 +16,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%
-		String query = (String) request.getAttribute("sta_name");
-		if (query == null) {
-			query = "";
-		}
-	%>
-
 	<nav class="Hui-breadcrumb">
-		<i class="icon-home"></i> 首页 <span class="c-gray en">&gt;</span> 信息查询
-		<span class="c-gray en">&gt;</span> 城市查询 <a
+		<i class="icon-home"></i> 首页 <span class="c-gray en">&gt;</span> 基础数据
+		<span class="c-gray en">&gt;</span> 车站管理 <a
 			class="btn btn-success radius r mr-20"
 			style="line-height: 1.6em; margin-top: 3px"
 			href="javascript:location.replace(location.href);" title="刷新"><i
@@ -33,48 +26,40 @@
 	</nav>
 	<div class="pd-20">
 		<div class="text-c">
-			<form action="QueryServlet?action=show" method="post">
-				城市查询： <select class="select" id="sel_Sub" name="sel_Sub"
-					onChange="SetSubID(this);">
-					<option value="0">根据城市名</option>
-					<option value="100">根据城市三字码</option>
-					<option value="101">根据所属机场</option>
-				</select> <input type="text" class="input-text" style="width: 250px"
-					placeholder="输入城市名，城市三字码，所属机场" id="sta_name" name="sta_name"
-					value=<%=query%>>&nbsp;&nbsp;&nbsp;
+			<form action="../getstationbycondition.do" method="post">
+				车站查询： <input type="text" class="input-text" style="width: 250px"
+					placeholder="输入站名，拼音码，或所属铁路局" id="sta_name" name="sta_name">&nbsp;&nbsp;&nbsp;
 				<button type="submit" class="btn btn-success">
 					<i class="icon-search"></i> 查询
 				</button>
 			</form>
 		</div>
 		<div class="cl pd-5 bg-1 bk-gray mt-20">
-  <div class="cl pd-5 bg-1 bk-gray mt-20">
-    <span class="l"><a href="javascript:;" onClick="deleteseveralstations()" class="btn btn-danger radius"><i class="icon-trash"></i> 批量删除</a>
-  <a href="javascript:;" onClick="user_add('55','','添加','add_airport_in.jsp')" class="btn btn-primary radius"><i class="icon-plus"></i> 添加车站</a></span>
+			<span class="l"><a
+				onClick="user_add('550','','添加车站','add_airport_in.jsp')"
+				class="btn btn-primary radius"><i class="icon-plus"></i> 添加车站</a></span>
 		</div>
-		<div class="mt-20">
-			<table id="page"
-				class="table table-border table-bordered table-hover table-bg order_table">
-				<thead>
+		<table
+			class="table table-border table-bordered table-hover table-bg table-sort">
+			<thead>
+				<tr class="text-c">
+					<th width="100">城市ID</th>
+					<th width="150">城市名字</th>
+					<th width="100">所属省份</th>
+					<th width="200">所属机场</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach items="${citylist}" var="temp">
 					<tr class="text-c">
-						<th width="100">城市ID</th>
-						<th width="150">城市名字</th>
-						<th width="100">所属省份</th>
-						<th width="200">所属机场</th>
+						<td>${temp.cityCode}</td>
+						<td>${temp.cityName}</td>
+						<td>${temp.province}</td>
+						<td>${temp.dromeName}</td>
 					</tr>
-				</thead>
-				<tbody>
-					<c:forEach items="${citylist}" var="temp">
-						<tr class="text-c">
-							<td>${temp.cityCode}</td>
-							<td>${temp.cityName}</td>
-							<td>${temp.province}</td>
-							<td>${temp.dromeName}</td>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-		</div>
+				</c:forEach>
+			</tbody>
+		</table>
 		<div id="pageNav" class="pageNav"></div>
 	</div>
 	<script type="text/javascript" src="package/layer/layer.min.js"></script>
@@ -83,7 +68,7 @@
 	<script type="text/javascript"
 		src="package/js/jquery.dataTables.min.js"></script>
 	<script type="text/javascript" src="package/js/H-ui.admin.js"></script>
-	<script type="text/javascript">
+	<!-- <script type="text/javascript">
 		$(document).ready(function() {
 			$('.order_table').DataTable({
 				//开启搜索框  
@@ -107,5 +92,6 @@
 			});
 		});
 	</script>
+	 -->
 </body>
 </html>
