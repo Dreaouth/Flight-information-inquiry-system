@@ -16,9 +16,15 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%
+   String query=(String)request.getAttribute("sta_name");
+   if(query==null){
+	   query="";
+   }
+%>
 	<nav class="Hui-breadcrumb">
-		<i class="icon-home"></i> 首页 <span class="c-gray en">&gt;</span> 基础数据
-		<span class="c-gray en">&gt;</span> 车站管理 <a
+		<i class="icon-home"></i> 首页 <span class="c-gray en">&gt;</span> 计划管理
+		<span class="c-gray en">&gt;</span> 添加机场 <a
 			class="btn btn-success radius r mr-20"
 			style="line-height: 1.6em; margin-top: 3px"
 			href="javascript:location.replace(location.href);" title="刷新"><i
@@ -26,9 +32,14 @@
 	</nav>
 	<div class="pd-20">
 		<div class="text-c">
-			<form action="../getstationbycondition.do" method="post">
-				车站查询： <input type="text" class="input-text" style="width: 250px"
-					placeholder="输入站名，拼音码，或所属铁路局" id="sta_name" name="sta_name">&nbsp;&nbsp;&nbsp;
+			<form action="AddCity?action=show" method="post">
+				城市查询： <select class="select" id="sel_Sub" name="sel_Sub"
+					onChange="SetSubID(this);">
+					<option value="0">根据城市名</option>
+					<option value="100">根据城市三字码</option>
+					<option value="101">根据所属机场</option>
+				</select> <input type="text" class="input-text" style="width: 250px"
+					placeholder="输入城市名，城市三字码，所属机场" id="sta_name" name="sta_name" value=<%=query %>>&nbsp;&nbsp;&nbsp;
 				<button type="submit" class="btn btn-success">
 					<i class="icon-search"></i> 查询
 				</button>

@@ -38,9 +38,9 @@
 						<ul>
 							<li><a _href="QueryServlet?action=showall">城市查询</a></li>
 							<li><a _href="QueryPlane?action=showall">航班查询</a></li>
-							<li><a _href="group-list_07.html">机型查询</a></li>
-							<li><a _href="ticketrate.html">航空公司查询</a></li>
-							<li><a _href="ticketrate.html">票价查询</a></li>
+							<li><a _href="QueryplaneName?action=showall">机型查询</a></li>
+							<li><a _href="QueryCompany?action=showall">航空公司查询</a></li>
+							<li><a _href="Queryticket?action=showall">票价查询</a></li>
 						</ul>
 					</dd>
 				</dl>

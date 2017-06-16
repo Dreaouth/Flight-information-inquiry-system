@@ -24,7 +24,7 @@
 
 	<nav class="Hui-breadcrumb">
 		<i class="icon-home"></i> 首页 <span class="c-gray en">&gt;</span> 信息查询
-		<span class="c-gray en">&gt;</span> 票价查询 <a
+		<span class="c-gray en">&gt;</span> 机型查询 <a
 			class="btn btn-success radius r mr-20"
 			style="line-height: 1.6em; margin-top: 3px"
 			href="javascript:location.replace(location.href);" title="刷新"><i
@@ -32,11 +32,9 @@
 	</nav>
 	<div class="pd-20">
 		<div class="text-c">
-			<form action="Queryticket?action=show" method="post">
-				起始城市： <input type="text" class="input-text" style="width: 200px"
-					placeholder="输入城市名，城市三字码" id="ticket_start" name="ticket_start" value=<%=query %>>&nbsp;&nbsp;&nbsp;
-					到达城市：<input type="text" class="input-text" style="width: 200px"
-					placeholder="输入城市名，城市三字码" id="ticket_arrive" name="ticket_arrive" value=<%=query %>>&nbsp;&nbsp;&nbsp;
+			<form action="QueryplaneName?action=show" method="post">
+				城市查询：  <input type="text" class="input-text" style="width: 250px"
+					placeholder="输入机型" id="plane_name" name="plane_name" value=<%=query %>>&nbsp;&nbsp;&nbsp;
 				<button type="submit" class="btn btn-success">
 					<i class="icon-search"></i> 查询
 				</button>
@@ -47,25 +45,15 @@
 			class="table table-border table-bordered table-hover table-bg order_table">
 			<thead>
 				<tr class="text-c">
-					<th width="20">ID</th>
-					<th width="50">起始城市代码</th>
-					<th width="70">起始城市</th>
-					<th width="50">到达城市代码</th>
-					<th width="70">ID</th>
-					<th width="40">数量</th>
-					<th width="40">单价</th>
+					<th width="50">ID</th>
+					<th width="150">机型号</th>
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${ticketlist}" var="temp">
+				<c:forEach items="${planenamelist}" var="temp">
 					<tr class="text-c">
 						<td>${temp.id}</td>
-						<td>${temp.startCode}</td>
-						<td>${temp.startcityname}</td>
-						<td>${temp.arriveCode}</td>
-						<td>${temp.arriveCityname}</td>
-						<td>${temp.number}</td>
-						<td>${temp.price}</td>
+						<td>${temp.name}</td>
 					</tr>
 				</c:forEach>
 			</tbody>

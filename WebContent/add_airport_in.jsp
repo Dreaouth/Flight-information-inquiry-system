@@ -22,43 +22,28 @@
 <body>
 <div class="pd-20">
   <div class="Huiform">
-    <form action="inserttrain.do" method="post" onsubmit="return hidediv();" target="_parent">
+    <form action="AddServlet?action=addcity" method="post"  target="_parent">
       <table class="table table-bg">
         <tbody>
          <tr>
-            <th width="100" class="text-r"><span class="c-red">*</span> 车次号码：</th>
-            <td><input type="text" style="width:300px" class="input-text"  id="tra_id" name="tra_id" ></td>
+            <th width="100" class="text-r"><span class="c-red">*</span> 城市代码：</th>
+            <td><input type="text" style="width:300px" class="input-text"  id="add_citycode" name="add_citycode" ></td>
           </tr>
           <tr>
-            <th width="100" class="text-r"><span class="c-red">*</span> 车次代码：</th>
-            <td><input type="text" style="width:300px" class="input-text"  id="tra_tid" name="tra_tid"></td>
+            <th width="100" class="text-r"><span class="c-red">*</span> 城市名：</th>
+            <td><input type="text" style="width:300px" class="input-text"  id="add_cityname" name="add_cityname"></td>
           </tr>
           <tr>
-            <th class="text-r"><span class="c-red">*</span> 始发站：</th>
-            <td><input type="text" style="width:300px" class="input-text" id="tra_begin" name="tra_begin"></td>
+            <th class="text-r"><span class="c-red">*</span> 所属省份：</th>
+            <td><input type="text" style="width:300px" class="input-text" id="add_province" name="add_province"></td>
           </tr>
           <tr>
-            <th class="text-r"><span class="c-red">*</span> 终点站：</th>
-            <td><input type="text" style="width:300px" class="input-text"   id="tra_end" name="tra_end"></td>
+            <th class="text-r"><span class="c-red">*</span> 机场名：</th>
+            <td><input type="text" style="width:300px" class="input-text"   id="add_drome" name="add_drome"></td>
           </tr>
-          <tr>
-          <tr>
-            <th class="text-r"><span class="c-red">*</span> 车体分类：</th>
-            <td><select style="width:300px" name="sta_condition" class="select">
-            <option value="空调">空调</option>
-            <option value="非空调">非空调</option>
-            
-            </select></td>
-            </tr>
-          <tr>
-            <th class="text-r"><span class="c-red">*</span> 列车类别：</th>
-            <td><select style="width:300px" name="sta_kind" class="select">
-            <option value="普快">普快</option>
-            <option value="特快">特快</option>
-            </select></td></tr>
-           <th></th>
-            <td><button class="btn btn-success radius" type="submit" ><i class="icon-ok"></i> 确定</button></td>
-          </tr>
+            <tr>
+            <td><button class="btn btn-success radius" type="submit" ><i class="icon-ok"></i> 确定</button>
+            </td></tr>
         </tbody>
       </table>
     </form>

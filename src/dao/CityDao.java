@@ -62,6 +62,7 @@ public class CityDao {
 			City city=null;
 			while (rs.next()) {
 				city=new City();
+				city.setId(rs.getInt("id"));
 				city.setCityCode(rs.getString("cityCode"));
 				city.setCityName(rs.getString("cityname"));
 				city.setProvince(rs.getString("province"));

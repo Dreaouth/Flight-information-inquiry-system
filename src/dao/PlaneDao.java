@@ -1,7 +1,9 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +12,51 @@ import information.Plane;
 import util.DBHelper;
 
 public class PlaneDao {
+	public boolean addPlane(Plane plane){
+		try {
+			Connection conn=DBHelper.getConnection();
+			Statement stmt=conn.createStatement();
+			String sql="insert into plane(startcity,lastcity,company,airlinecode,"
+					+ "startDrome,arriveDrome,starttime,arrivetime,mode,week) values"
+					+ "(?,?,?,?,?,?,?,?,?,?)";
+			PreparedStatement ptmt=conn.prepareStatement(sql);
+			ptmt.setString(1, plane.getStartCity());
+			ptmt.setString(2, plane.getLastCity());
+			ptmt.setString(3, plane.getCompany());
+			ptmt.setString(4, plane.getArilineCode());
+			ptmt.setString(5, plane.getStartDrome());
+			ptmt.setString(6, plane.getArriveDrome());
+			ptmt.setString(7, plane.getStartTime());
+			ptmt.setString(8, plane.getArriveTime());
+			ptmt.setString(9, plane.getMode());
+			ptmt.setString(10,plane.getWeek());
+			ptmt.execute();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return true;
+	}
+	
+	public boolean deletePlane(int id){
+		try {
+			Connection conn=DBHelper.getConnection();
+			String sql="delete from plane where id='"+id+"';";
+			PreparedStatement ptmt=conn.prepareStatement(sql);
+			ptmt.execute();
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
 	public List<Plane> queryAll(){
 		try {
 			Connection conn=DBHelper.getConnection();
