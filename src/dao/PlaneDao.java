@@ -1,5 +1,7 @@
 package dao;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,10 +14,20 @@ import information.Plane;
 import util.DBHelper;
 
 public class PlaneDao {
-	public boolean addPlane(Plane plane){
+    public static String getException(Throwable e){ 
+        StringWriter sw = new StringWriter();
+        PrintWriter pw = new PrintWriter(sw, true);
+        e.printStackTrace(pw);
+        pw.flush();
+        sw.flush();
+        String excption=sw.toString().split("at")[0];
+        excption=excption.split(":")[1];
+        return excption;
+}
+	public String addPlane(Plane plane){
+		String judge="ok";
 		try {
 			Connection conn=DBHelper.getConnection();
-			Statement stmt=conn.createStatement();
 			String sql="insert into plane(startcity,lastcity,company,airlinecode,"
 					+ "startDrome,arriveDrome,starttime,arrivetime,mode,week) values"
 					+ "(?,?,?,?,?,?,?,?,?,?)";
@@ -33,12 +45,14 @@ public class PlaneDao {
 			ptmt.execute();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+			judge=getException(e);
 			e.printStackTrace();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
+			judge=getException(e);
 			e.printStackTrace();
 		}
-		return true;
+		return judge;
 	}
 	
 	public boolean deletePlane(int id){
@@ -56,6 +70,36 @@ public class PlaneDao {
 			e.printStackTrace();
 		}
 		return false;
+	}
+	public String updatePlane(Plane plane){
+		String judge="ok";
+		try {
+			Connection conn=DBHelper.getConnection();
+			String sql="update plane set startcity=?,lastcity=?,company=?,airlinecode=?,"
+					+ "startDrome=?,arriveDrome=?,starttime=?,arrivetime=?,mode=?,week=? where id=?";
+			PreparedStatement ptmt=conn.prepareStatement(sql);
+			ptmt.setString(1, plane.getStartCity());
+			ptmt.setString(2, plane.getLastCity());
+			ptmt.setString(3, plane.getCompany());
+			ptmt.setString(4, plane.getArilineCode());
+			ptmt.setString(5, plane.getStartDrome());
+			ptmt.setString(6, plane.getArriveDrome());
+			ptmt.setString(7, plane.getStartTime());
+			ptmt.setString(8, plane.getArriveTime());
+			ptmt.setString(9, plane.getMode());
+			ptmt.setString(10,plane.getWeek());
+			ptmt.setInt(11, plane.getId());
+			ptmt.execute();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			judge=getException(e);
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			judge=getException(e);
+			e.printStackTrace();
+		}
+		return judge;
 	}
 	public List<Plane> queryAll(){
 		try {

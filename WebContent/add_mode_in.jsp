@@ -20,50 +20,32 @@
 <title>添加车站</title>
 </head>
 <body>
-<script type="text/javascript">
+	<script type="text/javascript">
 		function check() {
-			var citycode = document.forms[0].add_citycode.value;//获取用户名所填的内容
-			var cityname = document.forms[0].add_cityname.value;//获取所填的密码
-			var province = document.forms[0].add_province.value;//获取用户名所填的内容
-			var drome = document.forms[0].add_drome.value;//获取用户名所填的内容
-			if (citycode == "") {
-				alert("错误提示：城市代码不能为空！");
+			var id = document.forms[0].add_mode_id.value;
+			var name = document.forms[0].add_mode_name.value;
+			if (id == "") {
+				alert("错误提示：机型ID不能为空！");
 				return false;
 			}
-			if (cityname == "") {
-				alert("错误提示：城市名不能为空！");
-				return false;
-			}
-			if (province == "") {
-				alert("错误提示：省份不能为空！");
-				return false;
-			}
-			if (drome == "") {
-				alert("错误提示：机场名不能为空！");
+			if (name == "") {
+				alert("错误提示：机型名字不能为空！");
 				return false;
 			}
 		}
 	</script>
 <div class="pd-20">
   <div class="Huiform">
-    <form action="AddServlet?action=addcity" method="post" onsubmit="return check()" target="_parent">
+    <form action="AddServlet?action=addplanemode" method="post" onsubmit="return check()" target="_parent">
       <table class="table table-bg">
         <tbody>
          <tr>
-            <th width="100" class="text-r"><span class="c-red">*</span> 城市代码：</th>
-            <td><input type="text" style="width:300px" placeholder="请输入城市三字码" class="input-text" id="add_citycode" name="add_citycode" ></td>
+            <th width="100" class="text-r"><span class="c-red">*</span> 机型ID：</th>
+            <td><input type="text" style="width:300px"  class="input-text" id="add_mode_id" name="add_mode_id" ></td>
           </tr>
           <tr>
-            <th width="100" class="text-r"><span class="c-red">*</span> 城市名：</th>
-            <td><input type="text" style="width:300px" class="input-text"  id="add_cityname" name="add_cityname"></td>
-          </tr>
-          <tr>
-            <th class="text-r"><span class="c-red">*</span> 所属省份：</th>
-            <td><input type="text" style="width:300px" class="input-text" id="add_province" name="add_province"></td>
-          </tr>
-          <tr>
-            <th class="text-r"><span class="c-red">*</span> 机场名：</th>
-            <td><input type="text" style="width:300px" class="input-text" id="add_drome" name="add_drome"></td>
+            <th width="100" class="text-r"><span class="c-red">*</span> 机型名字：</th>
+            <td><input type="text" style="width:300px" class="input-text"  id="add_mode_name" name="add_mode_name"></td>
           </tr>
             <tr>
             <td><button class="btn btn-success radius" type="submit" ><i class="icon-ok"></i> 确定</button>

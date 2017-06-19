@@ -18,8 +18,8 @@
 </head>
 <body>
 	<header class="Hui-header cl">
-		<a class="Hui-logo l" title="H-ui.admin v2.1" href="/">中国航空客户服务系统后台管理系统</a>
-		<a class="Hui-logo-m l" href="/" title="H-ui.admin">my12306</a> <span
+		<a class="Hui-logo l" title="H-ui.admin v2.1" href="welcome.jsp">中国航空客户服务系统后台管理系统</a>
+		<a class="Hui-logo-m l" href="welcome.jsp" title="H-ui.admin">my12306</a> <span
 			class="Hui-subtitle l">V1.0</span> <span class="Hui-userbox"><span
 			class="c-white">系统管理员：admin</span> <a
 			class="btn btn-danger radius ml-10" href="login.jsp" title="退出"><i
@@ -51,8 +51,8 @@
 					<dd>
 						<ul>
 							<li><a _href="add_airport.jsp" >添加机场</a></li>
-							<li><a _href="plan-list_15.html">添加航班</a></li>
-							<li><a _href="plan-list_15.html">添加机型</a></li>							
+							<li><a _href="add_plane.jsp">添加航班</a></li>
+							<li><a _href="add_mode.jsp">添加机型</a></li>							
 						</ul>
 					</dd>
 				</dl>
@@ -65,7 +65,6 @@
 							<li><a _href="seat-list_07.html" href="javascript:void(0)">更改城市(机场)</a></li>						
 							<li><a _href="seat-list_07.html" href="javascript:void(0)">更改航班</a></li>
 							<li><a _href="seat-list_07.html" href="javascript:void(0)">更改机型</a></li>
-							<li><a _href="seat-list_07.html" href="javascript:void(0)">更改航线</a></li>
 						</ul>
 					</dd>
 				</dl>
@@ -75,8 +74,7 @@
 					</dt>
 					<dd>
 						<ul>
-							<li><a _href="finance-manage.html" href="javascript:void(0)">更改机票数量</a></li>
-							<li><a _href="finance-manage.html" href="javascript:void(0)">更改机票价格</a></li>
+							<li><a _href="finance-manage.html" href="javascript:void(0)">更改机票</a></li>
 						</ul>
 					</dd>
 				</dl>

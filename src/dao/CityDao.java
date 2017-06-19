@@ -15,12 +15,12 @@ public class CityDao {
 	public boolean addCity(City city){
 		try {
 			Connection conn=DBHelper.getConnection();
-			String sql="insert into city(province,cityname,citycode,dromename) "+
+			String sql="insert into city(citycode,cityname,province,dromename) "+
 			"values(?,?,?,?);";
 			PreparedStatement ptmt=conn.prepareStatement(sql);
-			ptmt.setString(1, city.getProvince());
+			ptmt.setString(1, city.getCityCode());
 			ptmt.setString(2, city.getCityName());
-			ptmt.setString(3, city.getCityCode());
+			ptmt.setString(3, city.getProvince());
 			ptmt.setString(4, city.getDromeName());
 			ptmt.execute();
 			return true;
@@ -52,6 +52,29 @@ public class CityDao {
 			e.printStackTrace();
 		}
 		return false;
+	}
+	public boolean updateCity(City city){
+			try {
+				Connection conn=DBHelper.getConnection();
+				String sql="update city set citycode=?,cityname=?,province=?,dromename=?"
+						+" where citycode=?";
+				PreparedStatement ptmt=conn.prepareStatement(sql);
+				ptmt.setString(1, city.getCityCode());
+				ptmt.setString(2, city.getCityName());
+				ptmt.setString(3, city.getProvince());
+				ptmt.setString(4, city.getDromeName());
+				ptmt.setString(5, city.getCityCode());
+				ptmt.execute();
+				return true;
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return false;
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return false;
 	}
 	public List<City> queryAll(){
 		try {

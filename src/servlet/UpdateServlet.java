@@ -1,8 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,7 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.AirplaneDao;
 import dao.CityDao;
 import dao.PlaneDao;
 import information.AirplaneMode;
@@ -18,20 +15,17 @@ import information.City;
 import information.Plane;
 
 /**
- * Servlet implementation class AddServlet
+ * Servlet implementation class UpdateServlet
  */
-@WebServlet("/AddServlet")
-public class AddServlet extends HttpServlet {
+@WebServlet("/UpdateServlet")
+public class UpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private String action;
-	List<City> cities=new ArrayList<>();
-	List<Plane> planes=new ArrayList<>();
-	List<AirplaneMode> modes=new ArrayList<>();
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AddServlet() {
+    public UpdateServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -53,7 +47,7 @@ public class AddServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		if (request.getParameter("action")!=null) {
 			this.action=request.getParameter("action");
-			if (action.equals("addcity")) {
+			if (action.equals("updatecity")) {
 				String citycode=request.getParameter("add_citycode");
 				String cityname=request.getParameter("add_cityname");
 				String province=request.getParameter("add_province");
@@ -73,7 +67,7 @@ public class AddServlet extends HttpServlet {
 					request.getRequestDispatcher("add_airport_failure.jsp").forward(request, response);
 				}
 			}
-			if (action.equals("addplane")) {
+			if (action.equals("updateplane")) {
 				String startcity=request.getParameter("add_startcity");
 				String lastcity=request.getParameter("add_lastcity");
 				String company=request.getParameter("add_company");
@@ -115,7 +109,55 @@ public class AddServlet extends HttpServlet {
 					request.getRequestDispatcher("add_plane_failure.jsp").forward(request, response);
 				}
 			}
-			if (action.equals("addplanemode")) {
+			if (action.equals("updateplanemode")) {
+				String id=request.getParameter("add_mode_id");
+				String name=request.getParameter("add_mode_name");
+				AirplaneMode mode=new AirplaneMode();
+				mode.setId(Integer.parseInt(id));
+				mode.setName(name);
+				boolean judge=addMode(mode);
+				if (judge) {
+					modes.add(mode);
+					request.setAttribute("modeList", modes);
+					request.getRequestDispatcher("add_mode.jsp").forward(request, response);					
+				}
+				else {
+					request.getRequestDispatcher("add_mode_failure.jsp").forward(request, response);
+				}
+			}
+			if (action.equals("deletecity")) {
+				String id=request.getParameter("add_mode_id");
+				String name=request.getParameter("add_mode_name");
+				AirplaneMode mode=new AirplaneMode();
+				mode.setId(Integer.parseInt(id));
+				mode.setName(name);
+				boolean judge=addMode(mode);
+				if (judge) {
+					modes.add(mode);
+					request.setAttribute("modeList", modes);
+					request.getRequestDispatcher("add_mode.jsp").forward(request, response);					
+				}
+				else {
+					request.getRequestDispatcher("add_mode_failure.jsp").forward(request, response);
+				}
+			}
+			if (action.equals("deleteplane")) {
+				String id=request.getParameter("add_mode_id");
+				String name=request.getParameter("add_mode_name");
+				AirplaneMode mode=new AirplaneMode();
+				mode.setId(Integer.parseInt(id));
+				mode.setName(name);
+				boolean judge=addMode(mode);
+				if (judge) {
+					modes.add(mode);
+					request.setAttribute("modeList", modes);
+					request.getRequestDispatcher("add_mode.jsp").forward(request, response);					
+				}
+				else {
+					request.getRequestDispatcher("add_mode_failure.jsp").forward(request, response);
+				}
+			}
+			if (action.equals("deleteplanemode")) {
 				String id=request.getParameter("add_mode_id");
 				String name=request.getParameter("add_mode_name");
 				AirplaneMode mode=new AirplaneMode();
@@ -132,17 +174,17 @@ public class AddServlet extends HttpServlet {
 				}
 			}
 		}
+		
 	}
-	private boolean addCity(City city){
+	private boolean updateCity(City city){
 		CityDao dao=new CityDao();
-		return dao.addCity(city);
+		return dao.updateCity(city);
 	}
-	private String addPlane(Plane plane){
+	private String updatePlane(Plane plane){
 		PlaneDao dao=new PlaneDao();
-		return dao.addPlane(plane);
+		return dao.updatePlane(plane);
 	}
-	private boolean addMode(AirplaneMode mode){
-		AirplaneDao dao=new AirplaneDao();
-		return dao.addAirplane(mode);
-	}
+	private boolean update
+	
+
 }

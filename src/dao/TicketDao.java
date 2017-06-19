@@ -1,7 +1,9 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +12,31 @@ import information.Ticket;
 import util.DBHelper;
 
 public class TicketDao {
+	public boolean updateTicket(Ticket ticket){
+		try {
+			Connection conn=DBHelper.getConnection();
+			String sql="update ticket set startcode=?,startcityname=?,arrivecode=?,arrivecityname=?"
+					+ ",number=?,price=? where id=?";
+			PreparedStatement ptmt=conn.prepareStatement(sql);
+			ptmt.setString(1, ticket.getStartCode());
+			ptmt.setString(2, ticket.getStartcityname());
+			ptmt.setString(3, ticket.getArriveCode());
+			ptmt.setString(4, ticket.getArriveCityname());
+			ptmt.setInt(5, ticket.getNumber());
+			ptmt.setInt(6, ticket.getPrice());
+			ptmt.setInt(7, ticket.getId());
+			ptmt.execute();
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
 	public List<Ticket> queryAll(){
 		try {
 			Connection conn=DBHelper.getConnection();
