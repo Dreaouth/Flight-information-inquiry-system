@@ -62,9 +62,9 @@
 					</dt>
 					<dd>
 						<ul>
-							<li><a _href="seat-list_07.html" href="javascript:void(0)">更改城市(机场)</a></li>						
-							<li><a _href="seat-list_07.html" href="javascript:void(0)">更改航班</a></li>
-							<li><a _href="seat-list_07.html" href="javascript:void(0)">更改机型</a></li>
+							<li><a _href="UpdateAirport?action=showall">更改城市(机场)</a></li>						
+							<li><a _href="UpdatePlane?action=showall">更改航班</a></li>
+							<li><a _href="UpdateMode?action=showall">更改机型</a></li>
 						</ul>
 					</dd>
 				</dl>
@@ -74,7 +74,7 @@
 					</dt>
 					<dd>
 						<ul>
-							<li><a _href="finance-manage.html" href="javascript:void(0)">更改机票</a></li>
+							<li><a _href="UpdateTicket?action=showall">更改机票</a></li>
 						</ul>
 					</dd>
 				</dl>
@@ -84,8 +84,8 @@
 					</dt>
 					<dd>
 						<ul>
-							<li><a _href="admin-list_07.html" href="javascript:void(0)">用户管理</a></li>
-							<li><a _href="admin-role_07.html" href="javascript:void(0)">权限管理</a></li>
+							<li><a _href="admin-list_07.html">用户管理</a></li>
+							<li><a _href="admin-role_07.html">权限管理</a></li>
 						</ul>
 					</dd>
 				</dl>

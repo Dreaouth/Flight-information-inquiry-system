@@ -51,7 +51,7 @@
 					<th width="50">起始城市代码</th>
 					<th width="70">起始城市</th>
 					<th width="50">到达城市代码</th>
-					<th width="70">ID</th>
+					<th width="70">到达城市</th>
 					<th width="40">数量</th>
 					<th width="40">单价</th>
 				</tr>

@@ -37,7 +37,7 @@ public class CityDao {
 	public boolean deleteCity(String information){
 		try {
 			Connection conn=DBHelper.getConnection();
-			String sql="delete from city where cityname=? or citycode=?";
+			String sql="delete from city where id=? or citycode=?";
 			PreparedStatement ptmt=conn.prepareStatement(sql);
 			ptmt.setString(1, information);
 			ptmt.setString(2, information);

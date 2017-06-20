@@ -35,9 +35,29 @@ public class AirplaneDao {
 	public boolean deleteCity(String information){
 		try {
 			Connection conn=DBHelper.getConnection();
-			String sql="delete from AirplaneMode where name=?";
+			String sql="delete from AirplaneMode where id=?";
 			PreparedStatement ptmt=conn.prepareStatement(sql);
 			ptmt.setString(1, information);
+			ptmt.execute();
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
+	public boolean updateAirplane(AirplaneMode airplaneMode){
+		try {
+			Connection conn=DBHelper.getConnection();
+			String sql="update AirplaneMode set name=? "+
+			"where id=?";
+			PreparedStatement ptmt=conn.prepareStatement(sql);
+			ptmt.setString(1, airplaneMode.getName());
+			ptmt.setInt(2, airplaneMode.getId());
 			ptmt.execute();
 			return true;
 		} catch (SQLException e) {

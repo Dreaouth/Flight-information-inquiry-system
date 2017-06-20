@@ -55,7 +55,7 @@ public class PlaneDao {
 		return judge;
 	}
 	
-	public boolean deletePlane(int id){
+	public boolean deletePlane(String id){
 		try {
 			Connection conn=DBHelper.getConnection();
 			String sql="delete from plane where id='"+id+"';";

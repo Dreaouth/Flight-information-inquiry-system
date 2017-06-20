@@ -4,11 +4,17 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>添加失败</title>
+<title>更改失败</title>
 </head>
 <body>
-<h1>添加机场失败</h1>
-    添加失败，输入的省份不符或已存在该机场代号<br>
+<h1>更改航班失败</h1>
+<%
+   String query=(String)request.getAttribute("judge");
+   if(query==null){
+	   query="";
+   }
+%>
+    更改失败，<%=query %><br>
     <a href="javascript:history.back(-1);">返回添加页面</a>
 </body>
 </html>
