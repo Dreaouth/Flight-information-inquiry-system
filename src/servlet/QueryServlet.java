@@ -1,7 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -44,7 +43,6 @@ public class QueryServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html;charset=utf-8");
 		request.setCharacterEncoding("utf-8");
-		PrintWriter out = response.getWriter();
 		if (request.getParameter("action")!=null) {
 			this.action=request.getParameter("action");
 			if (action.equals("showall")) {

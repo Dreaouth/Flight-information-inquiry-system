@@ -51,7 +51,7 @@
         <tbody>
          <tr>
             <th width="100" class="text-r"><span class="c-red">*</span> 机型ID：</th>
-            <td><input type="text" style="width:300px"  class="input-text" id="add_mode_id" name="add_mode_id" value=<%=id %>></td>
+            <td><input type="text" style="width:300px"  class="input-text" id="add_mode_id" name="add_mode_id" readonly="readonly" value=<%=id %>></td>
           </tr>
           <tr>
             <th width="100" class="text-r"><span class="c-red">*</span> 机型名字：</th>

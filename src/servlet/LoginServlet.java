@@ -40,6 +40,7 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		response.setContentType("text/html;charset=utf-8");
 		request.setCharacterEncoding("utf-8");
 		String username,password;
 		username=request.getParameter("username");
@@ -47,24 +48,29 @@ public class LoginServlet extends HttpServlet {
 		Users users=new Users();
 		users.setUsername(username);
 		users.setPassword(password);
-		if (isQuery(users)) {
+		if (!isQuery(users).equals("false")) {
+			users.setStatus(isQuery(users));
+			System.out.println(users.getStatus());
+			request.setAttribute("username1", users.getStatus());
+			request.setAttribute("username", users.getUsername());
+			request.setAttribute("status", users.getStatus());
 			request.getRequestDispatcher("welcome.jsp").forward(request, response);
 		}
 		else {
 			request.getRequestDispatcher("login_failure.jsp").forward(request, response);
 		}
 	}
-	private boolean isQuery(Users users){
+	private String isQuery(Users users){
 		UserDao dao=new UserDao();
 		List<Users> list=dao.queryAll();
 		for(Users users2:list){
 			if (users.getUsername().equals(users2.getUsername())) {
 				if (users.getPassword().equals(users2.getPassword())) {
-					return true;
+					String status=users2.getStatus();
+					return status;
 				}
 			}
 		}
-		return false;
-		
+		return "false";
 	}
 }

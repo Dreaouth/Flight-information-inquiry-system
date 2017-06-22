@@ -13,14 +13,15 @@ import util.DBHelper;
 
 //用户的业务逻辑层
 public class UserDao {
-	public boolean addUsers(Users users){
+	public boolean addUsersfromregister(Users users){
 		try {
 			Connection conn=DBHelper.getConnection();
-			String sql="insert into users "+
-			"values(?,?);";
+			String sql="insert into users(username,password,status) "+
+			"values(?,?,?);";
 			PreparedStatement ptmt=conn.prepareStatement(sql);
 			ptmt.setString(1, users.getUsername());
 			ptmt.setString(2, users.getPassword());
+			ptmt.setString(3, "信息管理员");
 			ptmt.execute();
 			return true;
 		} catch (SQLException e) {
@@ -31,19 +32,60 @@ public class UserDao {
 			e.printStackTrace();
 		}
 		return false;
-		
 	}
-	public boolean delUsers(String username) {
+	public boolean addUsersfromadmin(Users users){
 		try {
 			Connection conn=DBHelper.getConnection();
-			String sql="delete from users where username=? ";
+			String sql="insert into users(username,password,status) "+
+			"values(?,?,?);";
 			PreparedStatement ptmt=conn.prepareStatement(sql);
-			ptmt.setString(1, username);
+			ptmt.setString(1, users.getUsername());
+			ptmt.setString(2, users.getPassword());
+			ptmt.setString(3, users.getStatus());
 			ptmt.execute();
 			return true;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
+	public boolean delUsers(int id) {
+		try {
+			Connection conn=DBHelper.getConnection();
+			String sql="delete from users where id=? ";
+			PreparedStatement ptmt=conn.prepareStatement(sql);
+			ptmt.setInt(1, id);
+			ptmt.execute();
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
+	public boolean updateUsers(Users users){
+		try {
+			Connection conn=DBHelper.getConnection();
+			String sql="update users set username=?,password=?,status=?"
+					+" where id=?";
+			PreparedStatement ptmt=conn.prepareStatement(sql);
+			ptmt.setString(1, users.getUsername());
+			ptmt.setString(2, users.getPassword());
+			ptmt.setString(3, users.getStatus());
+			ptmt.setInt(4, users.getId());
+			ptmt.execute();
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -59,8 +101,10 @@ public class UserDao {
 			Users user=null;
 			while (rs.next()) {
 				user=new Users();
+				user.setId(rs.getInt("id"));
 				user.setUsername(rs.getString("username"));
 				user.setPassword(rs.getString("password"));
+				user.setStatus(rs.getString("status"));
 				us.add(user);
 			}
 			return us;
@@ -78,6 +122,6 @@ public class UserDao {
 	public static void main(String[] args) {
 		UserDao dao=new UserDao();
 //		List<Users> users=dao.queryAll();
-		dao.delUsers("a1");
+		dao.delUsers(4);
 	}
 }

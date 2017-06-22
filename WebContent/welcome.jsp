@@ -17,11 +17,18 @@
 <title>航班信息系统主页面</title>
 </head>
 <body>
+<%
+	String status=request.getParameter("username1");
+	System.out.print(status);
+	String username=request.getParameter("username");
+	String userstatus=request.getParameter("status");
+	String title=status+"："+username+"ss"+userstatus;
+%>
 	<header class="Hui-header cl">
 		<a class="Hui-logo l" title="H-ui.admin v2.1" href="welcome.jsp">中国航空客户服务系统后台管理系统</a>
 		<a class="Hui-logo-m l" href="welcome.jsp" title="H-ui.admin">my12306</a> <span
 			class="Hui-subtitle l">V1.0</span> <span class="Hui-userbox"><span
-			class="c-white">系统管理员：admin</span> <a
+			class="c-white"><%=title %></span> <a
 			class="btn btn-danger radius ml-10" href="login.jsp" title="退出"><i
 				class="icon-off"></i> 退出</a></span> <a aria-hidden="false"
 			class="Hui-nav-toggle" id="nav-toggle" href="#"></a>
@@ -84,8 +91,7 @@
 					</dt>
 					<dd>
 						<ul>
-							<li><a _href="admin-list_07.html">用户管理</a></li>
-							<li><a _href="admin-role_07.html">权限管理</a></li>
+							<li><a _href="AdminServlet?action=showall">用户管理</a></li>
 						</ul>
 					</dd>
 				</dl>

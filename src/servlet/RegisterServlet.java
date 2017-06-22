@@ -49,7 +49,7 @@ public class RegisterServlet extends HttpServlet {
 			users.setUsername(username);
 			users.setPassword(password);
 			UserDao dao=new UserDao();
-			if (dao.addUsers(users)) {
+			if (dao.addUsersfromregister(users)) {
 				request.getRequestDispatcher("registerok.jsp").forward(request, response);
 			}
 			else{

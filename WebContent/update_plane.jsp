@@ -105,7 +105,6 @@
 		src="package/js/jquery.dataTables.min.js"></script>
 	<script type="text/javascript" src="package/js/H-ui.admin.js"></script>
 	<script type="text/javascript">
-window.onload=selectShow;
 var req;
 window.onload=function(){}
 function sta_del(obj,id)
