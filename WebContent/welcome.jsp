@@ -1,3 +1,5 @@
+<%@page import="java.util.jar.Attributes.Name"%>
+<%@page import="information.Users"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <!DOCTYPE html>
@@ -17,18 +19,16 @@
 <title>航班信息系统主页面</title>
 </head>
 <body>
-<%
-	String status=request.getParameter("username1");
-	System.out.print(status);
-	String username=request.getParameter("username");
-	String userstatus=request.getParameter("status");
-	String title=status+"："+username+"ss"+userstatus;
-%>
+	<%
+		Users a = (Users) request.getAttribute("users");
+		String title = a.getStatus() + "：" + a.getUsername();
+		String status = a.getStatus();
+	%>
 	<header class="Hui-header cl">
 		<a class="Hui-logo l" title="H-ui.admin v2.1" href="welcome.jsp">中国航空客户服务系统后台管理系统</a>
-		<a class="Hui-logo-m l" href="welcome.jsp" title="H-ui.admin">my12306</a> <span
-			class="Hui-subtitle l">V1.0</span> <span class="Hui-userbox"><span
-			class="c-white"><%=title %></span> <a
+		<a class="Hui-logo-m l" href="welcome.jsp" title="H-ui.admin">my12306</a>
+		<span class="Hui-subtitle l">V1.0</span> <span class="Hui-userbox"><span
+			class="c-white"><%=title%></span> <a
 			class="btn btn-danger radius ml-10" href="login.jsp" title="退出"><i
 				class="icon-off"></i> 退出</a></span> <a aria-hidden="false"
 			class="Hui-nav-toggle" id="nav-toggle" href="#"></a>
@@ -39,15 +39,60 @@
 			<div class="menu_dropdown bk_2">
 				<dl id="menu-user">
 					<dt>
-						<i class="icon-user"></i>  信息查询<b></b>
+						<i class="icon-user"></i> 信息查询<b></b>
 					</dt>
 					<dd>
 						<ul>
-							<li><a _href="QueryServlet?action=showall">城市查询</a></li>
-							<li><a _href="QueryPlane?action=showall">航班查询</a></li>
-							<li><a _href="QueryplaneName?action=showall">机型查询</a></li>
-							<li><a _href="QueryCompany?action=showall">航空公司查询</a></li>
-							<li><a _href="Queryticket?action=showall">票价查询</a></li>
+							<li>
+								<%
+									if (status.compareTo("超级管理员") == 0 || status.compareTo("数据管理员") == 0) {
+								%><a _href="QueryServlet?action=showall"> <%
+ 	} else {
+ %> <a _href="forbid.jsp"> <%
+ 	}
+ %>城市查询
+								</a>
+							</li>
+							<li>
+								<%
+									if (status.compareTo("超级管理员") == 0 || status.compareTo("数据管理员") == 0) {
+								%><a _href="QueryPlane?action=showall"> <%
+ 	} else {
+ %> <a _href="forbid.jsp"> <%
+ 	}
+ %>航班查询
+								</a>
+							</li>
+							<li>
+								<%
+									if (status.compareTo("超级管理员") == 0 || status.compareTo("数据管理员") == 0) {
+								%><a _href="QueryplaneName?action=showall"> <%
+ 	} else {
+ %> <a _href="forbid.jsp"> <%
+ 	}
+ %>机型查询
+								</a>
+							</li>
+							<li>
+								<%
+									if (status.compareTo("超级管理员") == 0 || status.compareTo("数据管理员") == 0) {
+								%><a _href="QueryCompany?action=showall"> <%
+ 	} else {
+ %> <a _href="forbid.jsp"> <%
+ 	}
+ %>航空公司查询
+								</a>
+							</li>
+							<li>
+								<%
+									if (status.compareTo("超级管理员") == 0 || status.compareTo("数据管理员") == 0) {
+								%><a _href="Queryticket?action=showall"> <%
+ 	} else {
+ %> <a _href="forbid.jsp"> <%
+ 	}
+ %>机票查询
+								</a>
+							</li>
 						</ul>
 					</dd>
 				</dl>
@@ -57,9 +102,36 @@
 					</dt>
 					<dd>
 						<ul>
-							<li><a _href="add_airport.jsp" >添加机场</a></li>
-							<li><a _href="add_plane.jsp">添加航班</a></li>
-							<li><a _href="add_mode.jsp">添加机型</a></li>							
+							<li>
+								<%
+									if (status.compareTo("超级管理员") == 0 || status.compareTo("计划管理员") == 0) {
+								%><a _href="add_airport.jsp"> <%
+ 	} else {
+ %> <a _href="forbid.jsp"> <%
+ 	}
+ %>添加机场
+								</a>
+							</li>
+							<li>
+								<%
+									if (status.compareTo("超级管理员") == 0 || status.compareTo("计划管理员") == 0) {
+								%><a _href="add_plane.jsp"> <%
+ 	} else {
+ %> <a _href="forbid.jsp"> <%
+ 	}
+ %>添加航班
+								</a>
+							</li>
+							<li>
+								<%
+									if (status.compareTo("超级管理员") == 0 || status.compareTo("计划管理员") == 0) {
+								%><a _href="add_mode.jsp"> <%
+ 	} else {
+ %> <a _href="forbid.jsp"> <%
+ 	}
+ %>添加机型
+								</a>
+							</li>
 						</ul>
 					</dd>
 				</dl>
@@ -69,9 +141,36 @@
 					</dt>
 					<dd>
 						<ul>
-							<li><a _href="UpdateAirport?action=showall">更改城市(机场)</a></li>						
-							<li><a _href="UpdatePlane?action=showall">更改航班</a></li>
-							<li><a _href="UpdateMode?action=showall">更改机型</a></li>
+							<li>
+								<%
+									if (status.compareTo("超级管理员") == 0 || status.compareTo("调度管理员") == 0) {
+								%><a _href="UpdateAirport?action=showall"> <%
+ 	} else {
+ %> <a _href="forbid.jsp"> <%
+ 	}
+ %>更改城市(机场)
+								</a>
+							</li>
+							<li>
+								<%
+									if (status.compareTo("超级管理员") == 0 || status.compareTo("调度管理员") == 0) {
+								%><a _href="UpdatePlane?action=showall"> <%
+ 	} else {
+ %> <a _href="forbid.jsp"> <%
+ 	}
+ %>更改航班
+								</a>
+							</li>
+							<li>
+								<%
+									if (status.compareTo("超级管理员") == 0 || status.compareTo("调度管理员") == 0) {
+								%><a _href="UpdateMode?action=showall"> <%
+ 	} else {
+ %> <a _href="forbid.jsp"> <%
+ 	}
+ %>更改机型
+								</a>
+							</li>
 						</ul>
 					</dd>
 				</dl>
@@ -81,7 +180,16 @@
 					</dt>
 					<dd>
 						<ul>
-							<li><a _href="UpdateTicket?action=showall">更改机票</a></li>
+							<li>
+								<%
+									if (status.compareTo("超级管理员") == 0 || status.compareTo("财务管理员") == 0) {
+								%><a _href="UpdateTicket?action=showall"> <%
+ 	} else {
+ %> <a _href="forbid.jsp"> <%
+ 	}
+ %>更改机票
+								</a>
+							</li>
 						</ul>
 					</dd>
 				</dl>
@@ -91,7 +199,16 @@
 					</dt>
 					<dd>
 						<ul>
-							<li><a _href="AdminServlet?action=showall">用户管理</a></li>
+							<li>
+								<%
+									if (status.compareTo("超级管理员") == 0) {
+								%><a _href="AdminServlet?action=showall"> <%
+ 	} else {
+ %> <a _href="forbid.jsp"> <%
+ 	}
+ %>用户管理
+								</a>
+							</li>
 						</ul>
 					</dd>
 				</dl>
@@ -118,7 +235,7 @@
 			<div id="iframe_box" class="Hui-articlebox">
 				<div class="show_iframe">
 					<div style="display: none" class="loading"></div>
-				    <iframe scrolling="yes" frameborder="0" src="load.jsp"></iframe>
+					<iframe scrolling="yes" frameborder="0" src="load.jsp"></iframe>
 				</div>
 			</div>
 		</section>

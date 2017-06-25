@@ -50,10 +50,7 @@ public class LoginServlet extends HttpServlet {
 		users.setPassword(password);
 		if (!isQuery(users).equals("false")) {
 			users.setStatus(isQuery(users));
-			System.out.println(users.getStatus());
-			request.setAttribute("username1", users.getStatus());
-			request.setAttribute("username", users.getUsername());
-			request.setAttribute("status", users.getStatus());
+			request.setAttribute("users", users);
 			request.getRequestDispatcher("welcome.jsp").forward(request, response);
 		}
 		else {
