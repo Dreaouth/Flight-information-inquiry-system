@@ -145,12 +145,11 @@
 								星期一 &nbsp;&nbsp;&nbsp;<input TYPE="checkbox" name="add_week"
 								VALUE="2"> 星期二 &nbsp;&nbsp; <input TYPE="checkbox"
 								name="add_week" VALUE="3"> 星期三 <BR> <input
-								TYPE="checkbox" name="add_week" VALUE="4"> 星期四 &nbsp;&nbsp;
-								<input TYPE="checkbox" name="add_week" VALUE="5">
+								TYPE="checkbox" name="add_week" VALUE="4"> 星期四
+								&nbsp;&nbsp; <input TYPE="checkbox" name="add_week" VALUE="5">
 								星期五 &nbsp;&nbsp; <input TYPE="checkbox" name="add_week"
 								VALUE="6"> 星期六 <BR> <input TYPE="checkbox"
-								name="add_week" VALUE="日"> 星期日 <BR>
-							</td>
+								name="add_week" VALUE="日"> 星期日 <BR></td>
 						</tr>
 						<tr>
 							<td><button class="btn btn-success radius" type="submit">

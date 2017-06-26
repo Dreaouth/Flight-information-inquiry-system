@@ -20,6 +20,7 @@
   <p class="f-20 text-success">欢迎使用<span class="f-14"></span>中国航空客户服务系统后台管理系统</p>
   <p>登录次数：38 </p>
   <p>上次登录IP：221.238.4.145  上次登录时间：2017-6-12 11:19:55</p>
+  <br>
   <table class="table table-border table-bordered table-bg">
     <thead>
       <tr>
@@ -77,7 +78,7 @@
       </tr>
     </tbody>
   </table>
-  
+  <br>
 </div>
 <footer>
   <p>感谢老师的帮助与支持<br>Copyright &copy;Civil Aviation University of China<br>

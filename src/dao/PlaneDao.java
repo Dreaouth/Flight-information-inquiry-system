@@ -29,7 +29,7 @@ public class PlaneDao {
 		try {
 			Connection conn=DBHelper.getConnection();
 			String sql="insert into plane(startcity,lastcity,company,airlinecode,"
-					+ "startDrome,arriveDrome,starttime,arrivetime,mode,week) values"
+					+ "startDrome,arriveDrome,starttime,arrivetime,mode,AirlineStop,week) values"
 					+ "(?,?,?,?,?,?,?,?,?,?)";
 			PreparedStatement ptmt=conn.prepareStatement(sql);
 			ptmt.setString(1, plane.getStartCity());
@@ -41,7 +41,8 @@ public class PlaneDao {
 			ptmt.setString(7, plane.getStartTime());
 			ptmt.setString(8, plane.getArriveTime());
 			ptmt.setString(9, plane.getMode());
-			ptmt.setString(10,plane.getWeek());
+			ptmt.setString(10,plane.getArilineStop());
+			ptmt.setString(11,plane.getWeek());
 			ptmt.execute();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -76,7 +77,7 @@ public class PlaneDao {
 		try {
 			Connection conn=DBHelper.getConnection();
 			String sql="update plane set startcity=?,lastcity=?,company=?,airlinecode=?,"
-					+ "startDrome=?,arriveDrome=?,starttime=?,arrivetime=?,mode=?,week=? where id=?";
+					+ "startDrome=?,arriveDrome=?,starttime=?,arrivetime=?,mode=?,AirlineStop=?,week=? where id=?";
 			PreparedStatement ptmt=conn.prepareStatement(sql);
 			ptmt.setString(1, plane.getStartCity());
 			ptmt.setString(2, plane.getLastCity());
@@ -87,8 +88,9 @@ public class PlaneDao {
 			ptmt.setString(7, plane.getStartTime());
 			ptmt.setString(8, plane.getArriveTime());
 			ptmt.setString(9, plane.getMode());
-			ptmt.setString(10,plane.getWeek());
-			ptmt.setInt(11, plane.getId());
+			ptmt.setString(10, plane.getArilineStop());
+			ptmt.setString(11,plane.getWeek());
+			ptmt.setInt(12, plane.getId());
 			ptmt.execute();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

@@ -66,7 +66,7 @@ public class UpdateMode extends HttpServlet {
 				boolean judge=updateMode(mode);
 				if (judge) {
 					List<AirplaneMode> list=queryAll();
-					request.setAttribute("modeList", list);
+					request.setAttribute("planenamelist", list);
 					request.getRequestDispatcher("update_mode.jsp").forward(request, response);					
 				}
 				else {
